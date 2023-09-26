@@ -1,7 +1,7 @@
 // options1.cairo
 // Execute `starklings hint options1` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+
 
 use option::OptionTrait;
 
@@ -13,6 +13,15 @@ fn maybe_icecream(
 ) -> Option<usize> { // We use the 24-hour system here, so 10PM is a value of 22 and 12AM is a value of 0
 // The Option output should gracefully handle cases where time_of_day > 23.
 // TODO: Complete the function body - remember to return an Option!
+    let five: Option<usize> = Option::Some(5);
+    let zero: Option<usize> = Option::Some(0);
+    if time_of_day < 22 {
+        five
+    } else if time_of_day < 24 {
+        zero
+    } else {
+        Option::None
+    }
 }
 
 
@@ -28,6 +37,6 @@ fn check_icecream() {
 #[test]
 fn raw_value() {
     // TODO: Fix this test. How do you get at the value contained in the Option?
-    let icecreams = maybe_icecream(12);
+    let icecreams = maybe_icecream(12).unwrap();
     assert(icecreams == 5, 'err_6');
 }
